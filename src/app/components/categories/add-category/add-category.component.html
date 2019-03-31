@@ -1,0 +1,75 @@
+<div class="mt-4 col-8 offset-2">
+	<div class="card">
+		<div class="card-header">
+			Add Category
+		</div>
+		<div class="card-body">
+			<form #addCategoryForm=ngForm (ngSubmit)="onSubmit()">
+				<div class="form-group row">
+					<label for="inputCategoryName3" class="col-sm-2 col-form-label">Category Name</label>
+					<div class="col-sm-10">
+						<input 
+							type="text"
+							name="categoryName"
+							class="form-control"
+							id="inputCategoryName3"
+							placeholder="Category Name"
+							[(ngModel)]="form.category_name"
+							required
+						>
+						<small class="text-danger" [hidden]="!error.category_name">
+						{{ error.category_name }}
+						</small>
+					</div>
+				</div>
+		
+				<div class="form-group row">
+					<label for="inputCategoryLevel3" class="col-sm-2 col-form-label">Category Level</label>
+					<div class="col-sm-10">
+						<select
+							name="categoryLevel"
+							class="form-control"
+							id="inputCategoryLevel3"
+							placeholder="Category Level"
+							[(ngModel)]="form.category_level"
+							(change)="onCategoryLevelChanged($event.target.value)"
+							required
+						>
+							<option *ngFor="let level of categoryLevels" [value]="level">{{ level }}</option>
+						</select>
+						<small class="text-danger" [hidden]="!error.category_level">
+							{{ error.category_level }}
+						</small>
+					</div>
+				</div>
+		
+				<div class="form-group row" *ngIf="parentCategoryRequired">
+					<label for="inputParentCategory3" class="col-sm-2 col-form-label">Parent category</label>
+					<div class="col-sm-10">
+						<select
+							name="parentCategory"
+							class="form-control"
+							id="inputParentCategory3"
+							placeholder="Parent category"
+							[(ngModel)]="form.parent_category_id"
+							(change)="onParentCategoryChange($event.target.value)"
+							[disabled]="!form.category_level || (form.category_level === 0)"
+							required
+						>
+							<option *ngFor="let category of parentCategories" [value]="category.id">{{category.category_name}}</option>
+						</select>
+						<small class="text-danger" [hidden]="!error.parent_category_id">
+							{{ error.parent_category_id }}
+						</small>
+					</div>
+				</div>
+	
+				<div class="form-group row">
+					<div class="col-sm-10 offset-2">
+						<button type="submit" class="btn btn-primary" [disabled]="!addCategoryForm.valid">Add Category</button>
+					</div>
+				</div>
+			</form>
+		</div>
+  	</div>
+</div>

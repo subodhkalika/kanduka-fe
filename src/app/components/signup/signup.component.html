@@ -1,0 +1,164 @@
+<div class="mt-4 col-8 offset-2">
+	<div class="card">
+		<div class="card-header">
+			Sign Up Here
+		</div>
+		<div class="card-body">
+			<form #signUpForm=ngForm (ngSubmit)="onSubmit()">
+
+				<div class="form-group row">
+					<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+					<div class="col-sm-10">
+						<input 
+							type="email"
+							name="email"
+							class="form-control"
+							id="inputEmail3"
+							placeholder="Email"
+							[(ngModel)]="form.email"
+							required
+						>
+						<small class="text-danger" [hidden]="!error.email">
+						{{ error.email }}
+						</small>
+					</div>
+				</div>
+        
+				<div class="form-group row">
+					<label for="inputName3" class="col-sm-2 col-form-label">Name</label>
+					<div class="col-sm-10">
+						<input
+							type="text"
+							name="name"
+							class="form-control"
+							id="inputName3"
+							placeholder="Name"
+							[(ngModel)]="form.name"
+							required
+						>
+						<small class="text-danger" [hidden]="!error.name">
+							{{ error.name }}
+						</small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+					<div class="col-sm-10">
+						<input
+							type="password"
+							name="password"
+							class="form-control"
+							id="inputPassword3"
+							placeholder="Password"
+							[(ngModel)]="form.password"
+							required
+						>
+						<small class="text-danger" [hidden]="!error.password">
+							{{ error.password }}
+						</small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="inputPasswordConfirmation3" class="col-sm-2 col-form-label">Confirm Password</label>
+					<div class="col-sm-10">
+						<input
+							type="password"
+							name="password_confirmation"
+							class="form-control"
+							id="inputPasswordConfirmation3"
+							placeholder="Confirm Password"
+							[(ngModel)]="form.password_confirmation"
+							required
+						>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="inputPhone3" class="col-sm-2 col-form-label">Phone</label>
+					<div class="col-sm-10">
+						<input
+							type="text"
+							name="phone"
+							class="form-control"
+							id="inputPhone3"
+							placeholder="Phone"
+							[(ngModel)]="form.phone"
+							maxlength="10"
+							required
+						>
+						<small class="text-danger" [hidden]="!error.phone">
+							{{ error.phone }}
+						</small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="inputAddress3" class="col-sm-2 col-form-label">Address</label>
+					<div class="col-sm-10">
+						<input
+							type="text"
+							name="address"
+							class="form-control"
+							id="inputAddress3"
+							placeholder="Address"
+							[(ngModel)]="form.address"
+							required
+						>
+						<small class="text-danger" [hidden]="!error.address">
+							{{ error.address }}
+						</small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label for="inputRole3" class="col-sm-2 col-form-label">Role</label>
+					<div class="col-sm-10">
+						<select
+							name="role"
+							class="form-control"
+							id="inputRole3"
+							placeholder="Role"
+							[(ngModel)]="form.role"
+							(change)="onRoleChange($event.target.value)"
+							required
+						>
+							<option *ngFor="let role of roles" [value]="role.user_role">{{role.user_role}}</option>
+						</select>
+						<small class="text-danger" [hidden]="!error.role">
+							{{ error.role }}
+						</small>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label for="inputRole3" class="col-sm-2 col-form-label">Type</label>
+					<div class="col-sm-10">
+						<select
+							name="role_type"
+							class="form-control"
+							id="inputRoleType3"
+							placeholder="Role Type"
+							[(ngModel)]="form.type"
+							[disabled]="!form.role"
+							required
+						>
+							<option *ngFor="let type of role_types" [value]="type.user_role_type">{{type.user_role_type}}</option>
+						</select>
+						<small class="text-danger" [hidden]="!error.type">
+							{{ error.type }}
+						</small>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-sm-10 offset-2">
+						<button type="submit" class="btn btn-primary" [disabled]="!signUpForm.valid">Sign Up</button>
+						<a class="btn btn-info float-right" routerLink="/login">Sign In</a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+<a routerLink="add" class="btn btn-primary float-right">Add Product</a>
+
+<div *ngIf="productData.items.length">
+	<table class="table">
+		<thead>
+			<tr>
+				<th *ngFor="let header of productData.headers">{{header}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of productData.items">
+        <td>{{ item.id }}</td>
+				<td>{{ item.product_name }}</td>
+				<td>{{ item.product_price }}</td>
+				<td>{{ item.product_lot }}</td>
+        <td>{{ item.category_id }}</td>
+        <td>{{ item.category.category_name }}</td>
+        <td>{{ item.addedby_user_id }}</td>
+				<td>{{ item.created_at }}</td>
+				<td>{{ item.updated_at }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

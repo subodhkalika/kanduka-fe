@@ -1,0 +1,22 @@
+<a routerLink="add" class="btn btn-primary float-right">Add Category</a>
+
+<div *ngIf="categoryData.items.length">
+	<table class="table">
+		<thead>
+			<tr>
+				<th *ngFor="let header of categoryData.headers">{{header}}</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of categoryData.items">
+				<td>{{ item.id }}</td>
+				<td>{{ item.category_name }}</td>
+				<td>{{ item.category_level }}</td>
+				<td>{{ item.parent_category_id }}</td>
+				<td>{{ item.addedby_user_id }}</td>
+				<td>{{ item.created_at }}</td>
+				<td>{{ item.updated_at }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
