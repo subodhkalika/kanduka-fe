@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Products } from './interfaces/product';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class ProductService {
   }
 
   getAllProducts() {
-    return this.http.get(`${this.baseUrl}/products`);
+    return this.http.get<Products>(`${this.baseUrl}/products`);
   }
 
   updateProduct(id, data) {

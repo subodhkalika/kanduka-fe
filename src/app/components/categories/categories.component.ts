@@ -29,7 +29,7 @@ export class CategoriesComponent implements OnInit {
 
 	ngOnInit() {
 		this.CategoryService.getAllCategories().subscribe(
-			response => this.organizeCategoryData(response.data)
+			response => this.organizeCategoryData(response.categories)
 		);
 	}
 

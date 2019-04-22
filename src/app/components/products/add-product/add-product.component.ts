@@ -28,7 +28,7 @@ export class AddProductComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.CategoryService.getAllCategories().subscribe(response => this.categories = response.data);
+		this.CategoryService.getAllCategories().subscribe(response => this.categories = response.categories);
 	}
 
 	onSubmit() {

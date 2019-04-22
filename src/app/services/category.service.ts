@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MaxCategory } from './interfaces/category';
+import { ParentCategories } from './interfaces/category';
+import { Categories } from './interfaces/category';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +18,7 @@ export class CategoryService {
   }
 
   getAllCategories() {
-    return this.http.get(`${this.baseUrl}/categories`);
+    return this.http.get<Categories>(`${this.baseUrl}/categories`);
   }
 
   updateCategory(id, data) {
@@ -23,10 +26,10 @@ export class CategoryService {
   }
 
   getMaxCategoryLevel() {
-    return this.http.get(`${this.baseUrl}/categories-max-level`);
+    return this.http.get<MaxCategory>(`${this.baseUrl}/categories-max-level`);
   }
 
   getParentCategories(level) {
-    return this.http.get(`${this.baseUrl}/parent-categories/${level}`);
+    return this.http.get<ParentCategories>(`${this.baseUrl}/parent-categories/${level}`);
   }
 }

@@ -29,7 +29,7 @@ export class ProductsComponent implements OnInit {
 
 	ngOnInit() {
 		this.ProductService.getAllProducts().subscribe(
-			response => this.organizeProductData(response.data)
+			response => this.organizeProductData(response.products)
 		);
 	}
 

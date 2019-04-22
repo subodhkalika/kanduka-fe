@@ -33,9 +33,9 @@ export class AddCategoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.CategoryService.getMaxCategoryLevel().subscribe(data => {
-      if(data !== null) {
-        const highestLevelGenerator = data.max_level + 2;
+    this.CategoryService.getMaxCategoryLevel().subscribe(response => {
+      if(response !== null) {
+        const highestLevelGenerator = response.max_level + 2;
         this.categoryLevels = Array.from(Array(highestLevelGenerator).keys());
         this.parentCategoryRequired = this.categoryLevels.length > 1 ? true : false;
       }
@@ -53,7 +53,7 @@ export class AddCategoryComponent implements OnInit {
 	this.parentCategoryRequired = false;	  
     if (value > 0) {
       this.CategoryService.getParentCategories(value).subscribe(response => {
-		this.parentCategories = response.data;
+		this.parentCategories = response.parent_categories;
       });
       this.parentCategoryRequired = true;
     }
